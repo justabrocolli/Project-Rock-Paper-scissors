@@ -18,7 +18,18 @@ function getComputerChoice(){
 function getUserChoice(){
     let userChoice = prompt("Choose: Rock | Paper | Scissors");
     userChoice.toLocaleLowerCase;
-    return userChoice;
+    switch(userChoice){
+        case 'rock':
+            return userChoice;
+        break;
+        case 'paper':
+            return userChoice;
+        break;
+        case 'scissors':
+            return userChoice;
+        break;
+    }
+    return alert("invalid option please try again...") + getUserChoice();
 }
 
 function match(player , PC){
@@ -26,26 +37,26 @@ function match(player , PC){
         case 'rock':
             if(PC == 'paper'){
                 pcScore++;
-                return alert(`YOU LOST...`)
+                return alert(`YOU LOST...`);
             } 
             else if(PC == 'scissors'){
                 humanScore++;
-                return alert(`YOU WON!`)
+                return alert(`YOU WON!`);
             }
             else
-                return alert(`A TIE`)
+                return alert(`A TIE`);
         break;
         case 'paper':
             if(PC == 'scissors'){
                 pcScore++;
-                return alert(`YOU LOST...`)
+                return alert(`YOU LOST...`);
             } 
             else if(PC == 'rock'){
                 humanScore++;
-                return alert(`YOU WON!`)
+                return alert(`YOU WON!`);
             }
             else
-                return alert(`A TIE}`)
+                return alert(`A TIE`);
         break;
         case 'scissors':
             if(PC == 'rock'){
@@ -54,10 +65,10 @@ function match(player , PC){
             } 
             else if(PC == 'paper'){
                 humanScore++;
-                return alert(`YOU WON!`)
+                return alert(`YOU WON!`);
             }
             else
-                return alert(`A TIE`)
+                return alert(`A TIE`);
         break;
     }
     return 0;
