@@ -129,6 +129,7 @@ function gamestatus(){
         userChoice.forEach(button => {
             button.removeEventListener("click", getUserChoice);
         });
+        screen.textContent = "GAME OVER!";
     }
 }
 
