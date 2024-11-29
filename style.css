@@ -6,9 +6,11 @@
 }
 #screen{
     justify-content: space-evenly;
+    padding-bottom: 40px;
 }
 
 button{
+    cursor: pointer;
     padding: 10px 15px;
     margin: 15px;
     background: rgb(165, 165, 255);
@@ -17,4 +19,7 @@ button{
     font-size: large;
     border: none;
     border-radius: 15px;
+}
+button:hover{
+    background: rgba(165, 165, 255, 0.7);
 }

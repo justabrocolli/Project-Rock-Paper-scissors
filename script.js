@@ -40,7 +40,8 @@ function getUserChoice(event){
     break;
 }
 let pc = getComputerChoice();
-   console.log(match(userChoice,pc));
+   match(userChoice,pc);
+   gamestatus();
 }
 
 function match(player , pc){
@@ -48,44 +49,45 @@ let _player = player;
 let _Pc = pc;
 display(_player, pc);
     let scoreText = document.querySelector(".score")
+    let winnerText = document.querySelector(".upertext")
     switch(_player){
         case 'Rock':
             if(_Pc == 'Paper'){
                 pcScore++;
-                return alert(`YOU LOST...`) , scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
+                return winnerText.textContent =`YOU LOST...` , scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
             } 
             else if(_Pc == 'Scissors'){
                 humanScore++;
-                return alert(`YOU WON!`),  scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
+                return winnerText.textContent = `YOU WON!`,  scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
             }
             else{
-                return alert(`A TIE`), scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
+                return winnerText.textContent = `A TIE`, scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
             }
         case 'Paper':
             if(_Pc == 'Scissors'){
                 pcScore++;
-                return alert(`YOU LOST...`),  scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
+                return winnerText.textContent = `YOU LOST...`,  scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
             } 
             else if(_Pc == 'Rock'){
                 humanScore++;
-                return alert(`YOU WON!`), scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
+                return winnerText.textContent = `YOU WON!` , scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
             }
             else{
-                return alert(`A TIE`), scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
+                return winnerText.textContent = `A TIE`, scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
             }
 
         case 'Scissors':
             if(_Pc == 'Rock'){
                 pcScore++;
-                return alert(`YOU LOST...`), scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`
+                return winnerText.textContent = `YOU LOST...` , scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`
             } 
             else if(_Pc == 'Paper'){
                 humanScore++;
-                return alert(`YOU WON!`),  scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
+                return winnerText.textContent = `YOU WON!`,  scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
                
             }
             else{
-                return alert(`A TIE`),  scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
+                return winnerText.textContent = `A TIE` ,  scoreText.textContent = `Won: ${humanScore} lost: ${pcScore}`;
             }
     }
     return 0;
@@ -110,6 +112,26 @@ function display(player , pc){
         _pc.src = "imgs/scissers.png";
 }
 
+function gamestatus(){
+    let winnerText = document.querySelector(".upertext");
+    let screen = document.querySelector("#screen");
+    
+    if(humanScore >= 5){
+        winnerText.textContent = "YOUR THE WINNER!!!"
+        userChoice.forEach(button => {
+            button.removeEventListener("click", getUserChoice);
+        });
+        screen.textContent = "GAME OVER!";
+    }
+
+    if(pcScore >= 5){
+        winnerText.textContent = "Good Luck next time..."
+        userChoice.forEach(button => {
+            button.removeEventListener("click", getUserChoice);
+        });
+    }
+}
+
 /*
 while((humanScore < 5) && (pcScore < 5)){
     console.log(`Round ${round}`);
@@ -123,7 +145,7 @@ while((humanScore < 5) && (pcScore < 5)){
 if(humanScore == 5){alert("Good Job You Won!")}
 if(pcScore == 5){alert("LOSER...Better luck next time NERD")}
 */
+
 userChoice.forEach(button => {
     button.addEventListener("click", getUserChoice);
 });
-
