@@ -27,7 +27,6 @@ function getUserChoice(event){
     
     let userChoice =  event.target.textContent;
     console.log(userChoice);
-   // userChoice.toLocaleLowerCase;
    switch (userChoice){
     case 1:
         answer = "Rock";
@@ -133,19 +132,6 @@ function gamestatus(){
     }
 }
 
-/*
-while((humanScore < 5) && (pcScore < 5)){
-    console.log(`Round ${round}`);
-    const player = getUserChoice();
-    const pc = getComputerChoice();
-    match(player,pc);
-    alert(`Score: player| ${humanScore} | ${pcScore} |Pc`);
-    console.log(`Score: player| ${humanScore} | ${pcScore} |Pc`);
-    round++;
-}
-if(humanScore == 5){alert("Good Job You Won!")}
-if(pcScore == 5){alert("LOSER...Better luck next time NERD")}
-*/
 
 userChoice.forEach(button => {
     button.addEventListener("click", getUserChoice);
